@@ -6,11 +6,20 @@
         }
     }
 
+ environment {
+     PATH = "$PATH:/opt/apache-maven-3.9.8/bin"
+ }
+
+    }
+
     stages {
-        stage('Clone-code') {
-            steps {
-               git branch: 'main', url: 'https://github.com/skblr55/tweet-trend-new.git'
+        stage {
+            steps (build) {
+                'sh mvn clean deploy'
             }
+             
+        }
+ 
         }
     }
 }
